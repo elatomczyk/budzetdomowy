@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block sidebar %}
+{% load static %}
+{% if user.is_authenticated %}
+		<a href="/loggedin">
+			<input type="button" value="Strona główna" id="menu" />
+		</a>
+		<a href="/create_d">
+			<input type="button" value="Dodaj dochod" id="menu" />
+		</a>
+	{% else %}
+		<a href="/">
+			<input type="button" value="Strona główna" id="menu" />
+		</a>
+		<a href="/admin/">
+			<input type="button" value="Admin" id="menu" />
+		</a>
+{% endif %}
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+	<h2>Twoje dochody</h2>
+	{% if dochody %}
+	<table class ="rachunki">
+		<tr>
+			<th>Tytuł</th><th>Opis</th><th>Data</th><th>Cena</th>
+		</tr>
+		{% for end in dochody %}
+			<tr>	
+				<td>{{ end.tytul }}</td><td>{{ end.opis }}</td>
+				<td>{{ end.data_zaplaty }}</td><td>{{ end.cena }} zł</td>
+				<td><a href="{% url 'uzytkownik.views.delete_d' end.id %}"><img src="{% static 'images/kosz.png' %}" alt="Usuń" style=" height:20px; margin-top: 0px"  /></a></td>
+				
+			</tr>				
+		{% endfor  %}
+	   </table>
+	{% else %}
+		<p>Tabela nie posiada elementów</p>
+	{% endif %}
+	{% if suma.suma_d %}
+		<p>Suma dochodów: {{ suma.suma_d }}zł</p>
+	{% else %}	
+		<p>Suma dochodów: 0.0 zł</p>
+	{% endif %}
+	{% else %}
+		<p>Nie jesteś uprawniony do oglądania tych treści!</p>
+		<p>Kliknij <a href="/login/">tu</a> aby się zalogować.</p>
+{% endif %}
+{% endblock %}
+
+

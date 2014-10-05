@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block sidebar %}
+{% if user.is_authenticated %}
+		<ul>
+			<li><a href="/rachunek_view/">Wróć</a></li>
+		</ul>
+	{% else %}
+		<ul>
+			<li><a href="/">Strona główna</a></li>
+			<li><a href="/admin/">Admin</a></li>
+		</ul>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h2>Twoje rachunki według dat</h2>
+	<form action="{% url 'daty'  %}" method="post">
+		{% csrf_token %}
+		{%if kategoria %}
+			<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+			<select name="choice" id="choice.id">
+				<option value="" selected="selected">---------</option>
+				{% for choice in kategoria %}
+	 				<option value="{{ choice.data_zaplaty }}">{{ choice.data_zaplaty }}</option>	 
+				{% endfor %}
+			</select>
+		<input type="submit" value="Wybierz" />
+	</form>
+	{% if rachunki %}
+		<table>
+			<tr>
+				<th>TYTUŁ</th><th>OPIS</th><th>STRONA WWW</th><th>DATA</th><th>CENA</th>
+			</tr>
+			{% for entry in rachunki %}
+				<tr>
+					<td>{{ entry.tytul }}</td><td>{{ entry.opis }}</td>
+					{% if entry.www %}
+						<td><a href={{ entry.www }}>Link</a>
+					{% else %}
+						<td>-</td>
+					{% endif %}
+					<td>{{ entry.data_zaplaty }}</td><td>{{ entry.cena }} zł</td>
+				</tr>
+			{% endfor  %}
+		</table>
+	{% else %}
+		<p>Brak elementów w danej kategorii</p>
+	{% endif %}
+	{% endif %}
+	{% endif %}
+{% endblock %}

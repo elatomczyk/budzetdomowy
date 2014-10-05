@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:background="#e2f5ff"
+    android:orientation="vertical"
+    tools:context="com.example.domowybudzet.SzczegolyDochody" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:layout_marginTop="30sp"
+            android:text="@string/tytul" 
+            android:textColor="#095e73"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tytul"
+            android:layout_width="0dp"
+            android:layout_marginTop="30sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:textSize="20sp"
+            android:textColor="#095e73"
+            android:layout_marginTop="5sp"
+            android:text="@string/opis" />
+
+        <TextView
+            android:id="@+id/opis"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_marginTop="5sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"/>
+        
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:textSize="20sp"
+            android:textColor="#095e73"
+            android:layout_marginTop="5sp"
+            android:text="@string/datazaplaty" />
+
+        <TextView
+            android:id="@+id/datazaplaty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="5sp"
+            android:layout_weight="0.25"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:textSize="20sp"
+            android:textColor="#095e73"
+            android:layout_marginTop="5sp"
+            android:text="@string/cena" />
+
+        <TextView
+            android:id="@+id/cena"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_marginTop="5sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+	
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.375"
+            android:text="@string/przyciskusun"
+            android:layout_marginTop="20sp"
+           	android:textColor="#e2f5ff"
+            android:background="#3bb9af" />
+          
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+	
+        <Button
+            android:id="@+id/wroc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.375"
+            android:text="@string/wroc"
+            android:layout_marginTop="20sp"
+           	android:textColor="#e2f5ff"
+            android:background="#3bb9af" />
+          
+    </LinearLayout>
+ 
+
+</LinearLayout>

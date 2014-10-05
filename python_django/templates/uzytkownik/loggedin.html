@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+
+		<head>
+			<title>Domowy budżet</title>
+		</head>
+
+		<body>
+				<div>
+		{% block baner %}
+<h1>DOMOWY BUDŻET</h1>
+		{% endblock %}
+{% block sidebar %}
+{% if user.is_authenticated %}
+		<a  href="/rachunek_view">
+			<input type="button" value="Wszystkie rachunki" id="menu" />
+		</a>
+		<a href="/dochod_view">
+			<input type="button" value="Źródła dochodu" id="menu" />
+		</a>
+		<a href="/przypomnienie_view">
+			<input type="button" value="Pilne rachunki" id="menu" />
+		</a>
+		<a href="/admin/">
+			<input type="button" value="Admin" id="menu" />
+		</a>
+	{% else %}
+		<a href="/">
+			<input type="button" value="Strona główna" id="menu" />
+		</a>
+		<a href="/admin/">
+			<input type="button" value="Admin" id="menu" />
+		</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<table class="podsumowanie">
+    <caption>Podsumowanie budżetu:</caption>
+	{% if suma_d %}
+		<tr><td>Suma dochodów: </td><td align="right" valign="middle">{{ suma_d }} zł</td></tr>
+	{% else %}	
+		<tr><td>Suma dochodów: </td><td align="right" valign="middle">0.0 zł</td></tr>
+	{% endif %}
+	{% if suma_r  %}
+		<tr><td>Suma rachunków: </td><td align="right" valign="middle">{{ suma_r }} zł</td></tr>
+	{% else %}	
+		<tr><td>Suma rachunków: </td><td align="right" valign="middle">0.0 zł</td></tr>
+	{% endif %}
+	<tr><td>Stan konta: </td>
+	{% if minus >= 0 %}
+		<td align="right" valign="middle"><font color="green"><B>{{ minus }} zł</B></font></td>
+		{% else %}
+		<td align="right" valign="middle"><font color="red"><B>{{ minus }} zł</B></font></td>
+	{% endif %}
+	</tr>
+</table>
+</br>
+	<p class="podsumowanie">{{ user }}, <a href="/logout/">wyloguj się</a></p>
+	{% else %}
+		<p>Nie jesteś uprawniony do oglądania tych treści!</p>
+		<p>Kliknij <a href="/login/">tu</a> aby się zalogować.</p>
+{% endif %}
+{% endblock %}
+</div>
+</body>
+
+</html>
+

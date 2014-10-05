@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#e2f5ff"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="118dp"
+        android:background="#3bb9af"
+        android:text="@string/zaloguj"
+        android:textColor="#e2f5ff" />
+
+       <ImageView
+           android:id="@+id/imageView1"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/name"
+           android:layout_alignParentLeft="true"
+           android:layout_alignParentTop="true"
+           android:background="#095e73"
+           android:contentDescription="@null"
+           android:src="@drawable/ic_launcher" />
+
+       <EditText
+           android:id="@+id/name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/password"
+           android:layout_alignRight="@+id/password"
+           android:layout_marginTop="30dp"
+           android:ems="10"
+           android:hint="@string/login" >
+
+           <requestFocus />
+       </EditText>
+
+       <EditText
+           android:id="@+id/password"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBottom="@+id/login"
+           android:layout_centerHorizontal="true"
+           android:layout_marginBottom="49dp"
+           android:ems="10"
+           android:hint="@string/haslo"
+           android:inputType="textPassword" />
+
+</RelativeLayout>

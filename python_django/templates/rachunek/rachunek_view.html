@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+
+		<head>
+			<title>Domowy budżet</title>
+		</head>
+		<body>
+{% block sidebar %}
+{% if user.is_authenticated %}
+		<a href="/loggedin">
+			<input type="button" value="Strona główna" id="menu" />
+		</a>
+		<a href="/create_r">
+			<input type="button" value="Dodaj rachunek" id="menu" />
+		</a>
+		<a href="/kategorie_view">
+			<input type="button" value="Kategorie" id="menu" />
+		</a>
+				<a href="/filtr_data">
+			<input type="button" value="Daty" id="menu" />
+		</a>
+	{% else %}
+		<a href="/">
+			<input type="button" value="Strona główna" id="menu" />
+		</a>
+		<a href="/admin/">
+			<input type="button" value="Admin" id="menu" />
+		</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h2>Twoje rachunki</h2>
+	{% if rachunki %}
+	<table class="rachunki">
+		<tr>
+			<th>Tytuł</th><th>Opis</th><th>www</th><th>Kategoria</th><th>Data</th><th>Cena</th>
+		</tr>
+		{% for entry in rachunki %}
+			<tr>	
+				<td>{{ entry.tytul }}</td><td>{{ entry.opis }}</td>
+				{% if entry.www %}
+				<td><a href={{ entry.www }}>Link</a>
+				{% else %}
+				<td>-</td>
+				{% endif %}		
+				</td><td>{{ entry.id_k }}</td><td>{{ entry.data_zaplaty }}</td><td>{{ entry.cena }} zł</td>
+				<td><a href="{% url 'uzytkownik.views.delete_r' entry.id%}"><img src="{% static 'images/kosz.png' %}" alt="Usuń" style=" height:20px; margin-top: 0px"  /></a></td>
+			</tr>		
+			
+		{% endfor  %}
+	   </table>
+	{% else %}
+		<p>Tabela nie posiada elementów</p>
+	{% endif %}
+	{% if suma.suma_r %}
+	<p>Suma rachunków: {{ suma.suma_r }}zł</p>
+	{% else %}	
+	<p>Suma dochodów: 0.0 zł</p>
+	{% endif %}
+	{% else %}
+		<p>Nie jesteś uprawniony do oglądania tych treści!</p>
+		<p>Kliknij <a href="/login/">tu</a> aby się zalogować.</p>
+{% endif %}
+{% endblock %}
+		</body>
+</html>
+
+

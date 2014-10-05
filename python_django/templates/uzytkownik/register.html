@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+
+		<head>
+			<title>Domowy budżet</title>
+			<link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}">
+		</head>
+
+		<body>
+			<div class="rejestracja">
+				<h2>Rejestracja</h2>
+				<form action="/register/" method="post">{% csrf_token %}
+					{{form}}
+					<br />
+					<input type="submit" value="Zarejestruj" id="przycisk_zarejestruj2" />
+				</form>
+			</div>
+		</body>
+
+</html>

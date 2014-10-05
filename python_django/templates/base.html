@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<title>{% block title %}Domowy budżet{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}">
+</head>
+<body>
+    <div id="baner">
+    	  <img src="{% static "images/banner.png" %}" alt="DOMOWY BUDŻET" />
+	</div>
+	<div id="page">
+	<div id="sidebar">
+		{% block sidebar %}
+		<ul>
+			<li><a href="/">Strona główna</a></li>
+			<li><a href="/admin/">Admin</a></li>
+		</ul>
+		{% endblock %}
+	</div>
+
+</div>
+	<div id="content">
+		{% block content %}This is the content area{% endblock %}
+	</div>
+
+	</div>
+
+</body>
+</html>

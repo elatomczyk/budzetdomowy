@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+
+		<head>
+			<title>Domowy budżet</title>
+			<link rel="stylesheet" type="text/css" href="{% static "css/default.css" %}">
+		</head>
+
+		<body>
+			<img src="{% static "images/banner.png" %}" alt="DOMOWY BUDŻET" />
+			<div class="logowanie">
+				{% if form.errors %}
+					<p class="error">Niestety, to nie jest prawidłowa nazwa użytkownika lub hasło</p>
+				{% endif %}
+
+				<form action="/auth/" method="post">{% csrf_token %}
+					<input type="text" name="username" value="" id="username" placeholder="login">
+					<br />
+					<input type="password" name="password" value="" id="password" placeholder="hasło">
+					<br />
+					<input type="submit" value="Zaloguj" id="przycisk_zaloguj"/>
+					<a href="/register">
+						<input type="button" value="Zarejestruj" id="przycisk_zarejestruj" />
+					</a>
+				</form>
+			</div>
+		</body>
+		
+</html>

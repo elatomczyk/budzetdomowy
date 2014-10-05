@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block sidebar %}
+{% if user.is_authenticated %}
+		<a href="/rachunek_view/">
+			<input type="button" value="Wróć" id="menu" />
+		</a>
+	{% else %}
+		<a href="/">
+			<input type="button" value="Strona główna" id="menu" />
+		</a>
+		<a href="/admin/">
+			<input type="button" value="Admin" id="menu" />
+		</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h2>Twoje rachunki według dat</h2>
+	<form action="{% url 'filtr_data'  %}" method="post">
+		{% csrf_token %}
+		{%if dzien %}
+			<p>Od   
+			<label for="d{{ forloop.counter }}">{{ d.choice_text }}</label>
+			<select name="d" >
+				<option value="" selected="selected">Dzień</option>
+				{% for d in dzien %}
+	 				<option value="{{ d}}">{{ d }}</option>	 
+				{% endfor %}
+				
+			</select>
+		{%if miesiac %}
+		
+			
+			<label for="m{{ forloop.counter }}">{{ m.choice_text }}</label>
+			<select name="m" >
+				<option value="" selected="selected">Miesiąc</option>
+				{% for m in miesiac %}
+	 				<option value="{{ m }}">{{ m }}</option>	 
+				{% endfor %}
+				
+			</select>
+		{%if rok %}
+			
+			<label for="r{{ forloop.counter }}">{{ r.choice_text }}</label>
+			<select name="r" >
+				<option value="" selected="selected">Rok</option>
+				{% for r in rok %}
+	 				<option value="{{ r }}">{{ r }}</option>	 
+				{% endfor %}
+				
+			</select>
+			
+			{%if dzien %}
+			<p>Do 
+			<label for="d2{{ forloop.counter }}">{{ d2.choice_text }}</label>
+			<select name="d2" >
+				<option value="" selected="selected">Dzień</option>
+				{% for d2 in dzien %}
+	 				<option value="{{ d2 }}">{{ d2}}</option>	 
+				{% endfor %}
+				
+			</select>
+		{%if miesiac %}
+		
+			
+			<label for="m2{{ forloop.counter }}">{{ m2.choice_text }}</label>
+			<select name="m2" >
+				<option value="" selected="selected">Miesiac</option>
+				{% for m2 in miesiac %}
+	 				<option value="{{ m2 }}">{{ m2 }}</option>	 
+				{% endfor %}
+				
+			</select>
+		{%if rok %}
+			
+			<label for="r2{{ forloop.counter }}">{{ r2.choice_text }}</label>
+			<select name="r2" >
+				<option value="" selected="selected">Rok</option>
+				{% for r2 in rok %}
+	 				<option value="{{ r2 }}">{{ r2 }}</option>	 
+				{% endfor %}
+				
+			</select>
+		</p>
+		<p><input type="submit" value="Szukaj" id="przycisk_zarejestruj" /></p>
+		
+		
+	</form>
+	{% if rachunki %}
+		<table class="rachunki">
+			<tr>
+				<th>TYTUŁ</th><th>OPIS</th><th>STRONA WWW</th><th>DATA</th><th>CENA</th>
+			</tr>
+			{% for entry in rachunki %}
+				<tr>
+					<td>{{ entry.tytul }}</td><td>{{ entry.opis }}</td>
+					{% if entry.www %}
+						<td><a href={{ entry.www }}>Link</a>
+					{% else %}
+						<td>-</td>
+					{% endif %}
+					<td>{{ entry.data_zaplaty }}</td><td>{{ entry.cena }} zł</td>
+				</tr>
+			{% endfor  %}
+		</table>
+	{% else %}
+		<p>Brak elementów w danym przedziale</p>
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+	{% endif %}
+{% endblock %}	

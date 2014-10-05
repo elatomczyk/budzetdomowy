@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DomowyBudzet</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="dochody">Lista dochodów</string>
+    <string name="rachunki">Lista rachunków</string>
+    <string name="wroc">Wróć</string>
+    <string name="dodaj">Dodaj</string>
+    <string name="title_activity_dodaj_d">Dodaj Dochod</string>
+    <string name="dodajd">Nowy dochód</string>
+    <string name="tytul">Tytuł</string>
+    <string name="opis">Opis</string>
+    <string name="datazaplaty">Data zapłaty</string>
+    <string name="cena">Cena</string>
+    <string name="www">Dodaj</string>
+    <string name="wwww">Strona www</string>
+    <string name="przyciskusun">Usuń</string>
+    <string name="wrocd">Wróć</string>
+    <string name="title_activity_logowanie">LogowanieActivity</string>
+    <string name="login">Login</string>
+    <string name="haslo">Hasło</string>
+    <string name="zaloguj">Zaloguj</string>
+    <string name="title_activity_dochody">Dochody</string>
+    <string name="title_activity_szczegoly_rachunki">SzczegolyRachunki</string>
+    <string name="title_activity_szczegoly_dochody">SzczegolyDochody</string>
+    <string name="tytuldochod">Wpisz tytul</string>
+    <string name="opisdochod">Wpisz opis</string>
+    <string name="cenadochod">Wpisz cene</string>
+    <string name="title_activity_dodaj_r">DodajRActivity</string>
+    <string name="wwwrachunek">Wpisz strone www</string>
+    <string name="powiadomienie">Powiadmienie</string>
+
+</resources>

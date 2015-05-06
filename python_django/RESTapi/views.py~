@@ -5,18 +5,11 @@ from django.contrib.auth.models import User
 from RESTapi.serializers import DochodySerializer, RachunkiSerializer, KategorieSerializer
 from uzytkownik.models import Dochody, Rachunki,Kategorie
 
-
-
-
 class KategorieLista(APIView):
     def get(self, request, format=None):
         lista = Kategorie.objects.all()
         serializer_kategoria = KategorieSerializer(lista)
         return Response(serializer_kategoria.data)
-
-
-
-
     
 class DodawanieRachunku(APIView):
     def get(self, request,tytull,opiss,cenaa,powiadomieniee,id_kk,id_uu, format=None):
